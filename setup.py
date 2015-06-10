@@ -19,16 +19,18 @@ def package_data(pkg, roots):
 
     return {pkg: data}
 
-
 setup(
     name='flashcards-xblock',
     version='0.1',
-    description='flashcards XBlock',   # TODO: write a better description.
+    description="Flashcards XBlock allowes the editor to add a list of \
+                quesitions and answers (separated by a comma) which are \
+                then displayed as flashcards.",
     packages=[
         'flashcards',
     ],
     install_requires=[
         'XBlock',
+        'Django',
     ],
     entry_points={
         'xblock.v1': [
