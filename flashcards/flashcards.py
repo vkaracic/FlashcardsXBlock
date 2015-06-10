@@ -1,18 +1,17 @@
 """
-    Flashcards XBlock allowes the editor to add a list of quesitions and answers 
-    (separated by a comma) which are then displayed as flashcards.
+    Flashcards XBlock allowes the editor to add a list of quesitions and 
+    answers (separated by a comma) which are then displayed as flashcards.
 """
 
 import pkg_resources
-import json 
 
 from xblock.core import XBlock
-from xblock.fields import Scope, Integer, Dict, String
+from xblock.fields import Scope, Dict, String
 from xblock.fragment import Fragment
 
 # Using the utils script from AnimationXBlock:
 # https://github.com/pmitros/AnimationXBlock
-# TODO: Create own
+# TO-DO: Create own
 
 from .utils import render_template
 
@@ -41,11 +40,11 @@ class FlashcardsXBlock(XBlock):
 
     
     def student_view(self, context=None):
+        """Create fragment and send the appropriate context."""
         context = {
             'flashcards': self.content,
             'title': self.title,
         }
-        print(self.title)
 
         frag = Fragment()
         frag.add_content(render_template('static/html/flashcards.html', context))

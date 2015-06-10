@@ -13,14 +13,14 @@ function FlashcardsXBlock(runtime, element) {
 
     /* Hide all elements for the first iteration */
     $('.flashcards_block li').hide();
-    $('.next-btn').click(function(e) {
+    $('.next-btn').click(function() {
 
         /* Hide the answer again */
         $('.fc-answer').css('visibility', 'hidden');
 
         /* Removing the previous question. Have trouble figuring out how to
            make it work without removing the previous question.
-           TODO: Figure this out!
+           TO-DO: Figure this out!
         */
         $('.flashcards_block > ul > li:visible:first').remove();
         $('.flashcards_block > ul > li:hidden:first').show();
