@@ -1,12 +1,14 @@
 # FlashcardsXBlock
 An Open edX platform XBlock to create and display flashcards.
 
-The flashcards are added as comma-separated values between the <flashcards> tags in the form:
+The flashcards are added as comma-separated values between the &lt;flashcards&gt; tags in the form:
 
 question1,answer1
+
 question2,answer2
 
 Output looks like this:
+
 ![Flashcard](flashcardsxblock.png)
 
 # TODO

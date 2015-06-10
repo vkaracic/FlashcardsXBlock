@@ -1,5 +1,7 @@
 <div class="flashcards_block">
 <div class="fc-number"><span class="current-fc">0</span> / <span class="fc-total">{{ flashcards|length }}</span></div>
+<div class="fc-title">{{ title }}</div>
+<hr>
 <ul>
     {% for question, answer in flashcards.items %}
     <li>

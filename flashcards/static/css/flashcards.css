@@ -5,6 +5,19 @@
     text-align:center;
 }
 
+.fc-title {
+    display:block;
+    width:100%;
+    text-align:center;
+    margin:10px 0;
+    font-weight:600;
+    font-size:2em;
+}
+.flashcards_block hr {
+    width:50%;
+    margin-bottom:30px;
+}
+
 .flashcards_block p {
     line-height:1;
     margin-top:10px;

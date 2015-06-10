@@ -21,6 +21,12 @@ class FlashcardsXBlock(XBlock):
     The content (the values between the <flashcards> tags) is saved as a 
     dictionary and passed as a dictionary to the HTML template
     """
+    title = String(
+            default=u"Flashcards title",
+            scope=Scope.settings,
+            help=u"Title of the flashcards block"
+        )
+
     content = Dict(
             default={},
             scope=Scope.settings,
@@ -37,7 +43,9 @@ class FlashcardsXBlock(XBlock):
     def student_view(self, context=None):
         context = {
             'flashcards': self.content,
+            'title': self.title,
         }
+        print(self.title)
 
         frag = Fragment()
         frag.add_content(render_template('static/html/flashcards.html', context))
@@ -60,7 +68,7 @@ class FlashcardsXBlock(XBlock):
         """
         block = runtime.construct_xblock_from_class(cls, keys)
         flashcards = {}
-
+        
         for line in node.text.split('\n'):
             line = line.strip()
             line = line.split(',')
@@ -68,6 +76,7 @@ class FlashcardsXBlock(XBlock):
                 flashcards[line[0]] = line[1]
 
         block.content = flashcards
+        block.title = node.attrib['title']
         return block
 
 
@@ -77,7 +86,7 @@ class FlashcardsXBlock(XBlock):
         return [
             ("FlashcardsXBlock",
              """<vertical_demo>
-                <flashcards>
+                <flashcards title="Capital cities">
 Croatia,Zagreb
 France,Paris
 Lorem ipsum dolor sit amet vim ex simul soluta ponderum duo enim ornatus reprehendunt in ut nam dignissim theophrastus. Tacimates explicari ne sit dicit pertinax in est vel eu posse epicuri. Regione signiferumque mei in at sea rebum decore placerat. Eruditi voluptua in eum mei ex eleifend tractatos. Sed id summo consetetur reprehendunt ut nemore expetendis quo. Ex qui iisque nonumes fuisset., Lorem ipsum dolor sit amet vim ex simul soluta ponderum duo enim ornatus reprehendunt in ut nam dignissim theophrastus. Tacimates explicari ne sit dicit pertinax in est vel eu posse epicuri. Regione signiferumque mei in at sea rebum decore placerat. Eruditi voluptua in eum mei ex eleifend tractatos. Sed id summo consetetur reprehendunt ut nemore expetendis quo. Ex qui iisque nonumes fuisset.
