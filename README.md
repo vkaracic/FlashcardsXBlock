@@ -7,7 +7,7 @@ question1,answer1
 question2,answer2
 
 Output looks like this:
-![Animation screenshot](animation_xblock.png)
+![Flashcard](flashcardsxblock.png)
 
 # TODO
 - add the XBlock to Studio
