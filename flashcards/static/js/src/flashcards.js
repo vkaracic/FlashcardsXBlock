@@ -4,6 +4,7 @@ function FlashcardsXBlock(runtime, element) {
     $('.fc-question').click(function() {
         $('.fc-answer').css('visibility', 'visible');
     });
+yvxcvfsdg
 
     /* Initializing the variables for displaying the current question
        and total questions.
