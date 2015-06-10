@@ -1,5 +1,5 @@
 """
-    Flashcards XBlock allowes the editor to add a list of quesitions and 
+    Flashcards XBlock allowes the editor to add a list of quesitions and
     answers (separated by a comma) which are then displayed as flashcards.
 """
 
@@ -9,15 +9,14 @@ from xblock.core import XBlock
 from xblock.fields import Scope, Dict, String
 from xblock.fragment import Fragment
 
-# Using the utils script from AnimationXBlock:
-# https://github.com/pmitros/AnimationXBlock
-# TO-DO: Create own
+from jinja2 import Environment, PackageLoader
 
-from .utils import render_template
+env = Environment(loader=PackageLoader('flashcards', 'static/html'))
+
 
 class FlashcardsXBlock(XBlock):
     """
-    The content (the values between the <flashcards> tags) is saved as a 
+    The content (the values between the <flashcards> tags) is saved as a
     dictionary and passed as a dictionary to the HTML template
     """
     title = String(
@@ -38,7 +37,7 @@ class FlashcardsXBlock(XBlock):
         data = pkg_resources.resource_string(__name__, path)
         return data.decode("utf8")
 
-    
+
     def student_view(self, context=None):
         """Create fragment and send the appropriate context."""
         context = {
@@ -47,10 +46,11 @@ class FlashcardsXBlock(XBlock):
         }
 
         frag = Fragment()
-        frag.add_content(render_template('static/html/flashcards.html', context))
+        template = env.get_template("flashcards.html")
+        frag.add_content(template.render(**context))
         frag.add_css(self.resource_string("static/css/flashcards.css"))
         frag.add_javascript(self.resource_string("static/js/src/flashcards.js"))
-        frag.initialize_js('FlashcardsXBlock')        
+        frag.initialize_js('FlashcardsXBlock')
         return frag
 
     @classmethod
@@ -61,13 +61,13 @@ class FlashcardsXBlock(XBlock):
         The entire subtree under `node` is re-serialized, and set as the
         content of the XBlock.
 
-        The content between the <flashcards> blocks is being transformed 
+        The content between the <flashcards> blocks is being transformed
         into a dictionary, and as such saved into the content class variable
         (which is accessable with self.content)
         """
         block = runtime.construct_xblock_from_class(cls, keys)
         flashcards = {}
-        
+
         for line in node.text.split('\n'):
             line = line.strip()
             line = line.split(',')

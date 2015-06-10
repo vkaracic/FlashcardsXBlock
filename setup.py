@@ -30,7 +30,7 @@ setup(
     ],
     install_requires=[
         'XBlock',
-        'Django',
+        'Jinja2',
     ],
     entry_points={
         'xblock.v1': [
