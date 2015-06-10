@@ -1,0 +1,19 @@
+<div class="flashcards_block">
+<div class="fc-number"><span class="current-fc">0</span> / <span class="fc-total">{{ flashcards|length }}</span></div>
+<ul>
+    {% for question, answer in flashcards.items %}
+    <li>
+        <div class="fc-question">
+            <p>Question</p>
+            {{ question }}
+        </div>
+        <div class="fc-answer">
+            <p>Answer</p>
+            {{ answer }}
+        </div>
+    </li>
+    {% endfor %}
+
+</ul>
+</div>
+<div class="button next-btn"> START </div>

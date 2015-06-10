@@ -1,0 +1,13 @@
+flashcards/__init__.py
+flashcards/flashcards.py
+flashcards/utils.py
+flashcards/static/README.txt
+flashcards/static/css/flashcards.css
+flashcards/static/html/flashcards.html
+flashcards/static/js/src/flashcards.js
+flashcards_xblock.egg-info/PKG-INFO
+flashcards_xblock.egg-info/SOURCES.txt
+flashcards_xblock.egg-info/dependency_links.txt
+flashcards_xblock.egg-info/entry_points.txt
+flashcards_xblock.egg-info/requires.txt
+flashcards_xblock.egg-info/top_level.txt

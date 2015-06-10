@@ -1,0 +1,78 @@
+/* CSS for FlashcardsXBlock */
+.flashcards_block {
+    width:100%;
+    display:inline-block;
+    text-align:center;
+}
+
+.flashcards_block p {
+    line-height:1;
+    margin-top:10px;
+    margin-bottom:0;
+    font-size:0.5em;
+    color:#B0B0B0;
+    font-style: italic;
+    font-weight:200;
+}
+
+.flashcards_block ul {
+    padding:0;
+}
+
+.flashcards_block li {
+    list-style: none;
+}
+
+.fc-question {
+    display:inline-block;
+    width:40%;
+    padding:5% 3%;
+    text-align:center;
+    font-weight:600;
+    font-size:2em;
+    border:1px solid #000;
+    border-radius:20px;
+    margin-right:2%;
+}
+
+.fc-question:hover {
+    cursor: pointer;
+}
+
+.fc-answer {
+    visibility: hidden;
+    display:inline-block;
+    width:40%;
+    padding:5% 3%;
+    text-align:center;
+    font-weight:600;
+    font-size:2em;
+    border:1px solid #000;
+    border-radius:20px;
+    margin-left:2%;
+}
+
+.next-btn {
+    display:block;
+    line-height:50px;
+    width:10%;
+    margin:10px auto;
+    cursor: pointer;
+    background-color: #07CC72;
+    font-weight: 600;
+    color:#FAFAFA;
+    text-align: center;
+}
+
+.finished-btn {
+    display:block;
+    line-height:50px;
+    width:10%;
+    margin:10px auto;
+    background-color: #AAAAAA;
+    font-weight: 600;
+    color:#FAFAFA;
+    text-align: center;
+    cursor: default;
+
+}
