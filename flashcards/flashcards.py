@@ -47,7 +47,7 @@ class FlashcardsXBlock(XBlock):
 
         frag = Fragment()
         template = env.get_template("flashcards.html")
-        frag.add_content(template.render(**context)
+        frag.add_content(template.render(**context))
         frag.add_css(self.resource_string("static/css/flashcards.css"))
         frag.add_javascript(self.resource_string("static/js/src/flashcards.js"))
         frag.initialize_js('FlashcardsXBlock')
