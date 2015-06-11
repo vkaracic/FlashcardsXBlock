@@ -7,7 +7,7 @@ The flashcards are added as semicolon-separated values between the &lt;flashcard
 <flashcards title="Capital cities">
 Croatia;Zagreb
 France;Paris
-<flashcards>
+</flashcards>
 ```
 
 Output looks like this:
