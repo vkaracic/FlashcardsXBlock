@@ -70,7 +70,7 @@
 .next-btn {
     display:block;
     line-height:50px;
-    width:100px;
+    width:10%;
     margin:10px auto;
     cursor: pointer;
     background-color: #07CC72;
@@ -87,14 +87,14 @@
 }
 
 .next-btn:hover {
-    background-color: #00D372;
-    background-image:none;
+    background-color: #03E77F!important;
+    background-image:none!important;
 }
 
 .finished-btn {
     display:block;
     line-height:50px;
-    width:100px;
+    width:10%;
     margin:10px auto;
     background-color: #AAAAAA;
     font-weight: 600;
