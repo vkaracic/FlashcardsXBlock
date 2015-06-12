@@ -1,16 +1,38 @@
+<script>
+    var addFieldButton = document.getElementById("more_fields");
+    var flashCardList  = document.getElementById('flashcard-list')
+    var fc_number = 1;
+
+    function add_fields() {
+        fc_number++;
+        var fields = '<div class="fc-item">\n\
+        <label class="label setting-label" for="flashcards">Flashcard (' + fc_number + ')</label>\n\
+        <input class="input setting-input" name="front" placeholder="Front" type="text" />\n\
+        <input class="input setting-input" name="back" placeholder="Back" type="text" />\n\
+        </div>';
+        flashCardList.insertAdjacentHTML("beforeend", fields );
+    }
+
+    addFieldButton.addEventListener("click", add_fields);
+</script>
+
 <div class="wrapper-comp-settings is-active editor-with-buttons" id="settings-tab">
   <ul class="list-input settings-list">
     <li class="field comp-setting-entry is-set">
       <div class="wrapper-comp-setting">
         <label class="label setting-label" for="title">Flashcards deck title</label>
-        <input class="input setting-input" name="title" id="title" value="Title" type="text" />
+        <input class="input setting-input" name="title" id="title" placeholder="Title" type="text" />
       </div>
     </li>
     <li class="field comp-setting-entry is-set">
-      <div class="wrapper-comp-setting">
-        <label class="label setting-label" for="flashcards">Flashcards</label>
-        <textarea rows="4" cols="42" class="input setting-input" name="flashcards" id="flashcards" value="{flashcards}" type="text"></textarea>
+      <div class="wrapper-comp-setting" id="flashcard-list">
+        <div class="fc-item">
+          <label class="label setting-label" for="flashcards">Flashcard (1)</label>
+          <input class="input setting-input" name="front" placeholder="Front" type="text" />
+          <input class="input setting-input" name="back" placeholder="Back" type="text" />
+        </div>
       </div>
+      <input type="button" id="more_fields" value="Add flashcard" />
     </li>
   </ul>
   <div class="xblock-actions">

@@ -9,6 +9,8 @@ from xblock.core import XBlock
 from xblock.fields import Scope, Dict, String
 from xblock.fragment import Fragment
 
+from lxml import etree
+
 from jinja2 import Environment, PackageLoader
 
 env = Environment(loader=PackageLoader('flashcards', 'static/html'))
@@ -68,11 +70,8 @@ class FlashcardsXBlock(XBlock):
         block = runtime.construct_xblock_from_class(cls, keys)
         flashcards = {}
 
-        for line in node.text.split('\n'):
-            line = line.strip()
-            line = line.split(';')
-            if len(line) > 1:
-                flashcards[line[0]] = line[1]
+        for element in node.iter("flashcard"):
+            flashcards[element.attrib["front"]] = element.attrib["back"]
 
         block.content = flashcards
         block.title = node.attrib['title']
@@ -86,9 +85,8 @@ class FlashcardsXBlock(XBlock):
             ("FlashcardsXBlock",
              """<vertical_demo>
                 <flashcards title="Capital cities">
-Croatia;Zagreb
-France;Paris
-Lorem ipsum dolor sit amet vim ex simul soluta ponderum duo enim ornatus reprehendunt in ut nam dignissim theophrastus. Tacimates explicari ne sit dicit pertinax in est vel eu posse epicuri. Regione signiferumque mei in at sea rebum decore placerat. Eruditi voluptua in eum mei ex eleifend tractatos. Sed id summo consetetur reprehendunt ut nemore expetendis quo. Ex qui iisque nonumes fuisset.; Lorem ipsum dolor sit amet vim ex simul soluta ponderum duo enim ornatus reprehendunt in ut nam dignissim theophrastus. Tacimates explicari ne sit dicit pertinax in est vel eu posse epicuri. Regione signiferumque mei in at sea rebum decore placerat. Eruditi voluptua in eum mei ex eleifend tractatos. Sed id summo consetetur reprehendunt ut nemore expetendis quo. Ex qui iisque nonumes fuisset.
+<flashcard front="Croatia" back="Zagreb" />
+<flashcard front="France" back="Paris" />
                 </flashcards>
                 </vertical_demo>
              """),
@@ -105,7 +103,7 @@ Lorem ipsum dolor sit amet vim ex simul soluta ponderum duo enim ornatus reprehe
         frag = Fragment()
         template = env.get_template('flashcards_edit.html')
         frag.add_content(template.render(**context))
-       # frag.add_css(self.resource_string("static/css/flashcards_edit.css"))
+        frag.add_css(self.resource_string("static/css/flashcards_edit.css"))
         frag.add_javascript(self.resource_string("static/js/src/flashcards_edit.js"))
         frag.initialize_js('FlashcardsEditXBlock')
         return frag
@@ -117,11 +115,11 @@ Lorem ipsum dolor sit amet vim ex simul soluta ponderum duo enim ornatus reprehe
         
         flashcards = {}
 
-        for line in data.get('flashcards').split('\n'):
-            line = line.strip()
-            line = line.split(';')
-            if len(line) > 1:
-                flashcards[line[0]] = line[1]
+        fclist = data.get('flashcards').items()
+        fclist.reverse() # print out the list in the same order as entered
+        for item in fclist:
+            front, back = item
+            flashcards[front] = back        
 
         self.content = flashcards
 
