@@ -5,8 +5,8 @@ The flashcards are added as semicolon-separated values between the &lt;flashcard
 
 ```html
 <flashcards title="Capital cities">
-Croatia;Zagreb
-France;Paris
+<flashcard front="Croatia" back="Zagreb" />
+<flashcard front="France" back="Paris" />
 </flashcards>
 ```
 
