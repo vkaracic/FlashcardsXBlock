@@ -1,0 +1,11 @@
+.fc-item {
+    margin-top:10px;
+}
+
+.fc-item input {
+    width:30%!important;
+    margin-left:5px;
+}
+#more_fields {
+    width:20%!important;
+}
