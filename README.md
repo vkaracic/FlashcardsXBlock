@@ -10,6 +10,9 @@ The flashcards are added as semicolon-separated values between the &lt;flashcard
 </flashcards>
 ```
 
+The XBlock in Studio looks like this:
+![Flashcard_edit](flashcardsxblock_edit.png)
+
 Output looks like this:
 
 ![Flashcard](flashcardsxblock.png)
