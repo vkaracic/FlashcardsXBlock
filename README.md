@@ -17,5 +17,7 @@ Output looks like this:
 
 ![Flashcard](flashcardsxblock.png)
 
----
-contact: vkaracic@extensionengine.com
+## Want to contribute?
+If you have a suggestion, question or found a bug, please [open an issue](https://github.com/vkaracic/JARVIS/issues/new) for it.
+
+If you want to contribute code then you're awesome, and please open a pull request with details about the changes that you propose.
